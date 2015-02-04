@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get 'products/:id' => 'products#show'
 
-  get 'products/new'
+  get 'products/new' => 'products#new'
 
   get 'products/:id/edit' => 'products#edit'
 

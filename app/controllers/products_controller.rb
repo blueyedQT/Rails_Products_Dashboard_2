@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   end
 
   def new
-  	@errors = flash[:errors]
+  	# @errors = flash[:errors]
   end
 
   def edit
