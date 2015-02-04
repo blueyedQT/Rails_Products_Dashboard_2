@@ -1,7 +1,14 @@
 <h1>New Product</h1>
-<%= simple_form_for @product, html: { class: 'form-horizontal' } do |f| %>
+<% if @errors %>
+<% @errors.each do |error| %>
+<div class="alert-danger"><%= error %></div>
+<% end %>
+<% end %>
+<%= simple_form_for @product do |f| %>
 <%= f.input :name, placeholder: 'Product Name' %>
 <%= f.input :description, placeholder: 'Product Description' %>
 <%= f.input :pricing, placeholder: '20.33' %>
 <%= f.button :submit %>
 <% end %>
+<a href="/products"><h3>Back</h3></a>
+

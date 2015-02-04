@@ -9,28 +9,30 @@ class ProductsController < ApplicationController
 
   def new
   	@product = Product.new
-  	# @errors = flash[:errors]
+  	@errors = flash[:errors]
   end
 
   def edit
-  	@product = Product.find(params[:id])
+  	@product = Product.new
+  	@p = Product.find(params[:id])
   	@errors = flash[:errors]
   end
 
   def create
   	@product = params[:product]
-  	@new = Product.new(name:@product[:name], description:@product[:description], pricing:@product[:pricing])
+  	@new = Product.new( product_params )
   	if @new.valid?
   		@new.save
   		redirect_to '/products'
   	else
+  		puts @new.errors.full_messages
   		flash[:errors] = @new.errors.full_messages
   		redirect_to '/products/new'
   	end
   end
 
   def update
-  	@update = Product.find(params[:id]).update( name: params[:name], description: params[:description], pricing: params[:pricing] )
+  	@update = Product.find(params[:id]).update( product_params )
   	if @update
   		redirect_to '/products/'+params[:id]
   	else
@@ -43,4 +45,11 @@ class ProductsController < ApplicationController
   	@destroy = Product.find(params[:id]).destroy
   	redirect_to '/products'
   end
+
+  private
+	def product_params
+	  	params.require(:product).permit(:name, :description, :pricing)
+	end
+  # end
+
 end
