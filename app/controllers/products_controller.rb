@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
 
   def show
   	@product = Product.joins("LEFT JOIN 'categories' ON categories.id = products.category_id").select('products.*, categories.name AS cat').find(params[:id])
+    @comment = Comment.new
   end
 
   def new

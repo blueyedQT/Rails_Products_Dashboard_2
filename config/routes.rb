@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
+
   resources :products
+  resources :comments
+
+  put 'products/:id' => 'products#update'
+
+  # get 'comments/' => 'comments#index'
+
   # get 'products/' => 'products#index'
 
   # get 'products/index'
@@ -12,7 +19,6 @@ Rails.application.routes.draw do
 
   # post 'products/' => 'products#create'
 
-  put 'products/:id' => 'products#update'
 
   # delete 'products/:id' => 'products#destroy'
 
