@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
   end
 
   def new
+  	@product = Product.new
   	# @errors = flash[:errors]
   end
 
@@ -17,7 +18,8 @@ class ProductsController < ApplicationController
   end
 
   def create
-  	@new = Product.new( name: params[:name], description: params[:description], pricing: params[:pricing] )
+  	@product = params[:product]
+  	@new = Product.new(name:@product[:name], description:@product[:description], pricing:@product[:pricing])
   	if @new.valid?
   		@new.save
   		redirect_to '/products'
