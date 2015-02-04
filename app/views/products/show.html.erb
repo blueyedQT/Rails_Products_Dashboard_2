@@ -11,6 +11,10 @@
 		<div class="col-xs-8 col-sm-4 bold">Price:</div>
 		<div class="col-xs-8 col-sm-8 user"><%= @product.pricing %></div>
 	</div>
+	<div class="row">
+		<div class="col-xs-8 col-sm-4 bold">Category:</div>
+		<div class="col-xs-8 col-sm-8 user"><%= @product.cat %></div>
+	</div>
 	<div class="links">
 		<a href="/products/<%= @product.id %>/edit">Edit</a> | <a href="/products">Back</a>
 	</div>

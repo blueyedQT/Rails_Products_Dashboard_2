@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-  	@product = Product.find(params[:id])
+  	@product = Product.joins("LEFT JOIN 'categories' ON categories.id = products.category_id").select('products.*, categories.name AS cat').find(params[:id])
   end
 
   def new
@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
 
   def edit
   	@product = Product.new
-  	@p = Product.find(params[:id])
+  	@p = Product.joins("LEFT JOIN 'categories' ON categories.id = products.category_id").select('products.*, categories.name AS cat, categories.id AS cat_id').find(params[:id])
   	@errors = flash[:errors]
   end
 
@@ -33,6 +33,7 @@ class ProductsController < ApplicationController
 
   def update
   	@update = Product.find(params[:id]).update( product_params )
+  	puts product_params
   	if @update
   		redirect_to '/products/'+params[:id]
   	else
@@ -48,7 +49,7 @@ class ProductsController < ApplicationController
 
   private
 	def product_params
-	  	params.require(:product).permit(:category, :name, :description, :pricing)
+	  	params.require(:product).permit(:category_id, :name, :description, :pricing)
 	end
   # end
 

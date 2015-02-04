@@ -5,6 +5,7 @@
 	<% end %>
 <% end %>
 <%= simple_form_for @product, url: {action: 'update'}, :method => :put do |f| %>
+<%= f.association :category, :selected => @p.cat_id %>
 <%= f.input :name, input_html: {value: @p.name } %>
 <%= f.input :description, input_html: {value: @p.description } %>
 <%= f.input :pricing, input_html: {value: @p.pricing } %>

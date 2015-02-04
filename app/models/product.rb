@@ -1,4 +1,4 @@
 class Product < ActiveRecord::Base
 	belongs_to :category
-	validates :name, :description, :pricing, presence: true
+	validates :category, :name, :description, :pricing, presence: true
 end
