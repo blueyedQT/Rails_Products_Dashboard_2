@@ -1,2 +1,24 @@
-<h1>Products#edit</h1>
-<p>Find me in app/views/products/edit.html.erb</p>
+<h1>Editing Product</h1>
+<% if @errors %>
+	<% @errors.each do |error| %>
+	<p class="alert-danger"><%= error %></p>
+	<% end %>
+<% end %>
+<form action="/products/<%= @product.id %>" method="post">
+	<input type="hidden" name="_method" value="put">
+	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+	<div class="form-group">
+		<label for="name">Name</label>
+		<input type="text" class="form-control" name="name" value="<%= @product.name %>">
+	</div>
+	<div class="form-group">
+		<label for="description">Description</label>
+		<input type="text" class="form-control" name="description" value="<%= @product.description %>">
+	</div>
+	<div class="form-group">
+		<label for="pricing">Pricing</label>
+		<input type="text" class="form-control" name="pricing" value="<%= @product.pricing %>">
+	</div>
+	<button type="submit" class="btn btn default">Submit</button>
+</form>
+<a href="/products"><h3>Back</h3></a>
