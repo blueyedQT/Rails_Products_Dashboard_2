@@ -6,6 +6,7 @@
 			<th>Name</th>
 			<th>Description</th>
 			<th>Price</th>
+			<th>Category</th>
 			<th>Actions</th>
 		</tr>
 	</thead>
@@ -15,6 +16,7 @@
 			<td><%= product.name %></td>
 			<td><%= product.description %></td>
 			<td><%= product.pricing %></td>
+			<td><%= product.cat %></td>
 			<td>
 				<a href="/products/<%= product.id %>">Show</a> | 
 				<a href="/products/<%= product.id %>/edit">Edit</a> |

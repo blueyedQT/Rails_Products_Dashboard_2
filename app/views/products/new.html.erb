@@ -5,6 +5,7 @@
 <% end %>
 <% end %>
 <%= simple_form_for @product do |f| %>
+<%= f.association :category %>
 <%= f.input :name, placeholder: 'Product Name' %>
 <%= f.input :description, placeholder: 'Product Description' %>
 <%= f.input :pricing, placeholder: '20.33' %>

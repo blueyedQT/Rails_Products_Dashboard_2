@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
-  	@products = Product.all
+  	@products = Product.joins("LEFT JOIN 'categories' ON categories.id = products.category_id").select('products.*, categories.name AS cat')
   end
 
   def show
@@ -48,7 +48,7 @@ class ProductsController < ApplicationController
 
   private
 	def product_params
-	  	params.require(:product).permit(:name, :description, :pricing)
+	  	params.require(:product).permit(:category, :name, :description, :pricing)
 	end
   # end
 
