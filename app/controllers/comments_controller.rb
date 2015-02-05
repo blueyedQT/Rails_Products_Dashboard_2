@@ -10,11 +10,7 @@ class CommentsController < ApplicationController
   def create
   	@comment = params[:comment]
   	@id = @comment[:id].to_i
-  	@new = Comment.create(comment:@comment[:comment], product_id:@id)
-  	if @new.valid?
-  		redirect_to '/comments'
-  	else
-  		render :text => 'You failed!'
-  	end
+  	@comment = Comment.create(comment:@comment[:comment], product_id:@id)
+    redirect_to '/products/' + params[:comment][:id]
   end
 end

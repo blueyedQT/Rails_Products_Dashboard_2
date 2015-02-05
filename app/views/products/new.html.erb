@@ -5,11 +5,10 @@
 <% end %>
 <% end %>
 <%= simple_form_for @product do |f| %>
-<%= f.association :category, include_blank: false %>
-<%= f.input :name, placeholder: 'Product Name' %>
-<%= f.input :description, placeholder: 'Product Description' %>
-<%= f.input :pricing, placeholder: '20.33' %>
+<%= f.association :category %>
+<%= f.input :name, placeholder: 'My Product' %>
+<%= f.input :description, placeholder: 'This is the best product ever!' %>
+<%= f.input :pricing, placeholder: '123.45' %>
 <%= f.button :submit %>
 <% end %>
 <a href="/products"><h3>Back</h3></a>
-
